@@ -214,16 +214,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Grade\Create.cshtml" />
-    <Content Include="Views\Grade\Delete.cshtml" />
-    <Content Include="Views\Grade\Details.cshtml" />
-    <Content Include="Views\Grade\Edit.cshtml" />
-    <Content Include="Views\Grade\Index.cshtml" />
-    <Content Include="Views\StorePrices\Create.cshtml" />
-    <Content Include="Views\StorePrices\Delete.cshtml" />
-    <Content Include="Views\StorePrices\Details.cshtml" />
-    <Content Include="Views\StorePrices\Edit.cshtml" />
-    <Content Include="Views\StorePrices\Index.cshtml" />
+    <Content Include="Views\PriceChecker\Create.cshtml" />
+    <Content Include="Views\PriceChecker\Delete.cshtml" />
+    <Content Include="Views\PriceChecker\Details.cshtml" />
+    <Content Include="Views\PriceChecker\Edit.cshtml" />
+    <Content Include="Views\PriceChecker\Index.cshtml" />
+    <Content Include="Views\PriceHistory\Create.cshtml" />
+    <Content Include="Views\PriceHistory\Delete.cshtml" />
+    <Content Include="Views\PriceHistory\Details.cshtml" />
+    <Content Include="Views\PriceHistory\Edit.cshtml" />
+    <Content Include="Views\PriceHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

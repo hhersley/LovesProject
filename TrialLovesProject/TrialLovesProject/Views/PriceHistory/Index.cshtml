@@ -4,13 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Price History</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.StoreId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade1.Name)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.PreviousPrice)
         </th>
@@ -23,12 +30,8 @@
         <th>
             @Html.DisplayNameFor(model => model.TimeStamp)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Grade1.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Store.StoreId)
-        </th>
+
+
         <th></th>
     </tr>
 
