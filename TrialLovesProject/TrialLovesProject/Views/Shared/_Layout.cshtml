@@ -6,8 +6,13 @@
     <title>@ViewBag.Title - Love's Project</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="StyleSheet1.css" />
+
 </head>
 <body>
+    <div>
+        <img src="file:///C:/Users/Student/Desktop/Screenshot%202022-04-21%20090634.png"/>
+    </div>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,7 +22,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @Html.ActionLink("Love's Project", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
