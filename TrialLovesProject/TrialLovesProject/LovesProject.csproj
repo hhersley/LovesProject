@@ -214,15 +214,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\PriceChecker\Create.cshtml" />
-    <Content Include="Views\PriceChecker\Delete.cshtml" />
-    <Content Include="Views\PriceChecker\Details.cshtml" />
-    <Content Include="Views\PriceChecker\Edit.cshtml" />
     <Content Include="Views\PriceChecker\Index.cshtml" />
-    <Content Include="Views\PriceHistory\Create.cshtml" />
-    <Content Include="Views\PriceHistory\Delete.cshtml" />
-    <Content Include="Views\PriceHistory\Details.cshtml" />
-    <Content Include="Views\PriceHistory\Edit.cshtml" />
     <Content Include="Views\PriceHistory\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
