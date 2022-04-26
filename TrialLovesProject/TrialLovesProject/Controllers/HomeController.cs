@@ -13,6 +13,11 @@ namespace TrialLovesProject.Controllers
             return View();
         }
 
+        private void Validate_Click(object sender, EventArgs e)
+        {
+            //string storechosen = tbostore.text;
+            //return View(StorePricesController(storechosen));
+        }
 
     }
 }
