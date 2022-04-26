@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.Store.StoreId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Grade1.Name)
+            Grade
         </th>
 
         <th>
@@ -55,12 +55,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Store.StoreId)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+ 
     </tr>
 }
 
+
 </table>
+<div style="padding-left: 45%; ">
+    <button style="background-color:red" id="Export" type="button">Export to CSV</button>
+
+</div>
