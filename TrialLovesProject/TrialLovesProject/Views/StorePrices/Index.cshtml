@@ -36,32 +36,34 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PreviousPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NewPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceDifference)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade1.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Store.StoreId)
-        </td>
- 
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Store.StoreId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Grade1.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PreviousPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NewPrice)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PriceDifference)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TimeStamp)
+    </td>
+
+
+
+</tr>
 }
 
 
 </table>
-<div style="padding-left: 45%; ">
+<div style="padding-left: 45%; text-decoration:solid">
     <button style="background-color:red" id="Export" type="button">Export to CSV</button>
 
 </div>
