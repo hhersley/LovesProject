@@ -15,8 +15,13 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: Grade
-        public ActionResult Index()
+        public ActionResult Index(string storenumber = "1")
         {
+            var storePrices = db.Grades.Include(s => s.StorePrices);
+
+            ViewData[storenumber] = new SelectList( "Id", "Name");
+            //var store = db.Grades.Include(s => s.StorePrices).;
+
             return View(db.Grades.ToList());
         }
 

@@ -15,10 +15,12 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: StorePrices
-        public ActionResult Index(/*int chosenstore*/)
+        public ActionResult Index(string storenumber = "1")
         {
+            
             var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
-            return View(storePrices.ToList());
+            
+                return View(storePrices.ToList());
         }
 
         // GET: StorePrices/Details/5
@@ -36,13 +38,13 @@ namespace TrialLovesProject.Controllers
             return View(storePrice);
         }
 
-        // GET: StorePrices/Create
-        public ActionResult Create()
-        {
-            ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name");
-            ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId");
-            return View();
-        }
+        //// GET: StorePrices/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name");
+        //    ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId");
+        //    return View();
+        //}
 
         // POST: StorePrices/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

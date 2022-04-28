@@ -13,16 +13,34 @@
             Unleaded Regular
         </td>
         <td>
-            Unleaded Premium
+            Unleaded Plus
         </td>
         <td>
             Unleaded Super
         </td>
     </tr>
+    @*@if()*@
+
+    @foreach (var item in Model)
+    {
+<tr>
+    @*<td>
+        @Html.DisplayFor(modelItem => item.StorePrices)
+    </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.GradeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
 
 
 
-</table>
+
+</tr>
+    }
+
+    </table>
 <div style="padding-left: 45%; ">
 
     <button style="background-color:red" id="Validate" type="button">Validate Price</button>
