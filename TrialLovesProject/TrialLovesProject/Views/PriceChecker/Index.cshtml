@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrialLovesProject.Models.Grade>
+﻿@model IEnumerable<TrialLovesProject.Models.StorePrice>
 
 @{
     ViewBag.Title = "PriceChecker";
@@ -11,19 +11,14 @@
 
     @foreach (var item in Model)
     {
-        
+
         <tr>
             <th>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.Grade1.Name)
             </th>
-         
-        
-
-        
-
 
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.NewPrice)
             </td>
 
 
