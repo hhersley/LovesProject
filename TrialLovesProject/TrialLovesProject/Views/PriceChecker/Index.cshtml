@@ -9,7 +9,7 @@
 
 <table class="table">
 
-    @foreach (var item in Model)
+    @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
     {
 
         <tr>
@@ -17,9 +17,9 @@
                 @Html.DisplayFor(modelItem => item.Grade1.Name)
             </th>
 
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.NewPrice)
-            </td>
+            </td>*@
 
 
 
