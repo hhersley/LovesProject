@@ -15,8 +15,9 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: PriceChecker
-        public ActionResult Index()
+        public ActionResult Index(/*int tbostore, double tboprice*/)
         {
+           
             var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
             return View(storePrices.ToList());
         }
@@ -43,10 +44,6 @@ namespace TrialLovesProject.Controllers
             ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId");
             return View();
         }
-
-        // POST: PriceChecker/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,StoreNumber,Grade,PreviousPrice,NewPrice,PriceDifference,TimeStamp")] StorePrice storePrice)

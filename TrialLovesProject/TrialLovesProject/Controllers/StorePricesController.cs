@@ -15,7 +15,7 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: StorePrices
-        public ActionResult Index(string storenumber = "1")
+        public ActionResult Index(/*int? tbostore*/)
         {
             
             var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
@@ -59,7 +59,7 @@ namespace TrialLovesProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+        
 
         ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name", storePrice.Grade);
         ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId", storePrice.StoreNumber);

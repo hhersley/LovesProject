@@ -13,10 +13,10 @@ namespace TrialLovesProject.Controllers
             return View();
         }
 
-        public ActionResult Validate_Click(object sender, EventArgs e)
+      
+    public ActionResult SaveInfo()
         {
-            //string storechosen = tbostore.text;
-            return View("Price Checker", "Index", "PriceChecker");
+            return View();
         }
 
     }

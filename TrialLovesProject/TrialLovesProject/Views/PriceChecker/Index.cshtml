@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "PriceChecker";
+   
 }
 
 <h2>Price Checker</h2>
@@ -10,7 +11,7 @@
 <table class="table">
 
     @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
-    {   if (item.Store.StoreId == 2 /*storenumber*/)
+    {  if (item.Store.StoreId == 2)
         {
 
     <tr>
@@ -24,10 +25,12 @@
         <th>
             Unleaded Super
         </th>
-        </tr>
-        <tr>
+    </tr>
+    <tr>
         <td>
-            @item.NewPrice.ToString("N2")
+
+            
+            @item.NewPrice.ToString("N2")  @*tboprice instead of new price, because it isnt updated yet*@
         </td>
         <td>
             @((item.NewPrice + item.Store.Threshold).ToString("N2"))

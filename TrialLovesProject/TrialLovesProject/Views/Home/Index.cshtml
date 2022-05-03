@@ -6,23 +6,21 @@
 }
 
 
-<div >
 
-    <h1 style="text-align:center">What store are you at?</h1>
-    <form  style="padding-left: 40%"action="/url" method="GET">
-        <input name="tbostore" id="tbostore" type="text">
-     
-    </form>
-</div>
-<div>
 
-    <h1 style="text-align:center">Enter the base unleaded price below</h1>
-    <form style="padding-left:40%" action="/url" method="GET">
-        <input name="tboprice"type="text">
 
-    </form>
-</div>
-<div style="padding-left:43.5% ; padding-top:15px">
-    <button  style="background-color:red ; color:white" id="Validate" type="submit"><strong>Validate Price</strong></button>
+    <form action="/PriceChecker" method="Post">
+        <div>
+           <h1 style="text-align:center"> <label for="tbostore"  >What store are you at?</label></h1>
+           <div style="padding-left: 40%"> <input  name="tbostore" id="tbostore" value=""></div>
+        </div>
+        <div>
+            <h1 style="text-align:center"><label for="tboprice" style="text-align:center">Enter the base unleaded price below</label></h1>
+            <div style="padding-left: 40%"><input name="tboprice" id="tboprice" value=""></div>
+        </div>
+            <div style="padding-left:45% ; padding-top:15px">
+                <button onclick="SaveInfo()" style="background-color:red ; color:white">Submit</button>
+            </div>
+</form>
 
-</div>
+  
