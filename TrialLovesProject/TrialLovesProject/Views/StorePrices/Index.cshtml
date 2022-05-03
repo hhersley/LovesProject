@@ -36,6 +36,8 @@
     </tr>
 
 @foreach (var item in Model) {
+    if (item.Store.StoreId == 2)
+    {
 <tr> @*if storeid=storenumber or storeid=all*@
     <td>
         @Html.DisplayFor(modelItem => item.Store.StoreId)
@@ -50,24 +52,25 @@
         @Html.DisplayFor(modelItem => item.NewPrice)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.PriceDifference)
+        @Html.DisplayFor(modelItem => item.PriceDifference) @*is this supposed to be threshold or old v new*@
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.TimeStamp)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.Store.Threshold)
-    </td>
+    </td>*@
 
 
 </tr>
+    }
 }
 
 
-    
+
 
 </table>
-<div style="padding-left: 45%; ">
+@*<div style="padding-left: 45%; ">
     <button style="background-color:red" id="Export" type="button">Export to CSV</button>
 
-</div>
+</div>*@

@@ -10,26 +10,44 @@
 <table class="table">
 
     @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
-    {
+    {   if (item.Store.StoreId == 2 /*storenumber*/)
+        {
 
-        <tr>
-            <th>
-                @Html.DisplayFor(modelItem => item.Grade1.Name)
-            </th>
-
-            @*<td>
-                @Html.DisplayFor(modelItem => item.NewPrice)
-            </td>*@
-
-
-
-
+    <tr>
+        <th>
+            @*@Html.DisplayFor(modelItem => item.Grade1.Name)*@
+            Unleaded Regular
+        </th>
+        <th>
+            Unleaded Plus
+        </th>
+        <th>
+            Unleaded Super
+        </th>
         </tr>
+        <tr>
+        <td>
+            @item.NewPrice.ToString("N2")
+        </td>
+        <td>
+            @((item.NewPrice + item.Store.Threshold).ToString("N2"))
+        </td>
+        <td>
+            @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+
+        </td>
+
+
+
+
+
+    </tr>
+    }
     }
 
 </table>
 <div style="padding-left: 45%; ">
 
-    <button style="background-color:red" id="Validate" type="button">Validate Price</button>
+    <button style="background-color:red; color:white" id="Validate" type="button"><strong>Validate Price</strong></button>
 
 </div>
