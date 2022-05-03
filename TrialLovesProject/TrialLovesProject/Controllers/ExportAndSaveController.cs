@@ -10,111 +10,116 @@ using TrialLovesProject.Models;
 
 namespace TrialLovesProject.Controllers
 {
-    public class GradeController : Controller
+    public class ExportAndSaveController : Controller
     {
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
-        // GET: Grade
-        public ActionResult Index(string storenumber = "1")
+        // GET: ExportAndSave
+        public ActionResult Index(int tbostore)
         {
-            var grades = db.StorePrices.Include(g => g.Store);
-
-            var storePrices = db.Grades.Include(s => s.StorePrices);
-
+            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s=> s.StoreNumber == tbostore).OrderBy(s => s.TimeStamp).Take(1);
             return View(storePrices.ToList());
         }
 
-        // GET: Grade/Details/5
+        // GET: ExportAndSave/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            StorePrice storePrice = db.StorePrices.Find(id);
+            if (storePrice == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            return View(storePrice);
         }
 
-        // GET: Grade/Create
+        // GET: ExportAndSave/Create
         public ActionResult Create()
         {
+            ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name");
+            ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId");
             return View();
         }
 
-        // POST: Grade/Create
+        // POST: ExportAndSave/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GradeId,Name")] Grade grade)
+        public ActionResult Create([Bind(Include = "Id,StoreNumber,Grade,PreviousPrice,NewPrice,PriceDifference,TimeStamp")] StorePrice storePrice)
         {
             if (ModelState.IsValid)
             {
-                db.Grades.Add(grade);
+                db.StorePrices.Add(storePrice);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(grade);
+            ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name", storePrice.Grade);
+            ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId", storePrice.StoreNumber);
+            return View(storePrice);
         }
 
-        // GET: Grade/Edit/5
+        // GET: ExportAndSave/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            StorePrice storePrice = db.StorePrices.Find(id);
+            if (storePrice == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name", storePrice.Grade);
+            ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId", storePrice.StoreNumber);
+            return View(storePrice);
         }
 
-        // POST: Grade/Edit/5
+        // POST: ExportAndSave/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GradeId,Name")] Grade grade)
+        public ActionResult Edit([Bind(Include = "Id,StoreNumber,Grade,PreviousPrice,NewPrice,PriceDifference,TimeStamp")] StorePrice storePrice)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(grade).State = EntityState.Modified;
+                db.Entry(storePrice).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(grade);
+            ViewBag.Grade = new SelectList(db.Grades, "GradeId", "Name", storePrice.Grade);
+            ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId", storePrice.StoreNumber);
+            return View(storePrice);
         }
 
-        // GET: Grade/Delete/5
+        // GET: ExportAndSave/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            StorePrice storePrice = db.StorePrices.Find(id);
+            if (storePrice == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            return View(storePrice);
         }
 
-        // POST: Grade/Delete/5
+        // POST: ExportAndSave/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Grade grade = db.Grades.Find(id);
-            db.Grades.Remove(grade);
+            StorePrice storePrice = db.StorePrices.Find(id);
+            db.StorePrices.Remove(storePrice);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -15,10 +15,10 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: StorePrices
-        public ActionResult Index(/*int? tbostore*/)
+        public ActionResult Index(int? tbostore)
         {
-            
-            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
+          
+               var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore);
             
                 return View(storePrices.ToList());
         }

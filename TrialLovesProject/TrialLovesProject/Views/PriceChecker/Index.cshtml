@@ -10,9 +10,7 @@
 
 <table class="table">
 
-    @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
-    {  if (item.Store.StoreId == 2)
-        {
+
 
     <tr>
         <th>
@@ -26,31 +24,48 @@
             Unleaded Super
         </th>
     </tr>
-    <tr>
-        <td>
-
-            
-            @item.NewPrice.ToString("N2")  @*tboprice instead of new price, because it isnt updated yet*@
-        </td>
-        <td>
-            @((item.NewPrice + item.Store.Threshold).ToString("N2"))
-        </td>
-        <td>
-            @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
-
-        </td>
+    @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
+    {
+        <tr>
+            <td>
 
 
+                @item.NewPrice.ToString("N2")  @*tboprice instead of new price, because it isnt updated yet*@
+            </td>
+            <td>
+                @((item.NewPrice + item.Store.Threshold).ToString("N2"))
+            </td>
+            <td>
+                @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+
+            </td>
 
 
 
-    </tr>
-    }
+
+
+        </tr>
+
     }
 
 </table>
+
+
+
+
 <div style="padding-left: 45%; ">
 
     <button style="background-color:red; color:white" id="Validate" type="button"><strong>Validate Price</strong></button>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+

@@ -15,11 +15,15 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: PriceChecker
-        public ActionResult Index(/*int tbostore, double tboprice*/)
+        public ActionResult Index(int tbostore, double tboprice)
         {
            
-            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
-            return View(storePrices.ToList());
+            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
+
+            storePrices.PreviousPrice = storePrices.NewPrice;
+            storePrices.NewPrice = Convert.ToDecimal(tboprice);
+
+            return View(storePrices);
         }
 
         // GET: PriceChecker/Details/5
@@ -50,6 +54,9 @@ namespace TrialLovesProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+
                 db.StorePrices.Add(storePrice);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -95,39 +102,8 @@ namespace TrialLovesProject.Controllers
             return View(storePrice);
         }
 
-        // GET: PriceChecker/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            StorePrice storePrice = db.StorePrices.Find(id);
-            if (storePrice == null)
-            {
-                return HttpNotFound();
-            }
-            return View(storePrice);
-        }
+     
 
-        // POST: PriceChecker/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            StorePrice storePrice = db.StorePrices.Find(id);
-            db.StorePrices.Remove(storePrice);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+ 
     }
 }

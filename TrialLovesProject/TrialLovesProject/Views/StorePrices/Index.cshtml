@@ -7,9 +7,9 @@
 
 <h2>Price History</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create", "StorePrices")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -33,12 +33,11 @@
         </th>
 
 
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
-    if (item.Store.StoreId == 1)
-    {
+ 
 <tr> @*if storeid=storenumber or storeid=all*@
     <td>
         @Html.DisplayFor(modelItem => item.Store.StoreId)
@@ -62,7 +61,7 @@
 
 
 </tr>
-    }
+    
 }
 
 

@@ -128,7 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\ExportAndSaveController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PriceCheckerController.cs" />
     <Compile Include="Controllers\StorePricesController.cs" />
@@ -215,9 +215,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Grade\Index.cshtml" />
     <Content Include="Views\StorePrices\Index.cshtml" />
     <Content Include="Views\PriceChecker\Index.cshtml" />
+    <Content Include="Views\ExportAndSave\Create.cshtml" />
+    <Content Include="Views\ExportAndSave\Delete.cshtml" />
+    <Content Include="Views\ExportAndSave\Details.cshtml" />
+    <Content Include="Views\ExportAndSave\Edit.cshtml" />
+    <Content Include="Views\ExportAndSave\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TrialLovesProject.Models.StorePrice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.StoreId)
+        </th>
+        <th>
+            Grade
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceDifference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+       
+            <tr>
+                @*if storeid=storenumber or storeid=all*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Store.StoreId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade1.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreviousPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NewPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceDifference) @*is this supposed to be threshold or old v new*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+
+
+
+            </tr>
+        
+    }
