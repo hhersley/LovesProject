@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:WPFLovesProject"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Background="#FFFFE000">
+        <Image HorizontalAlignment="Left" Height="146" Margin="44,0,0,0" VerticalAlignment="Top" Width="768" Source="https://lh3.googleusercontent.com/jTopVLmW569wZI6XIV6m4_jCJuU2Syq1kxMFVixWJylK0yG7l_fu-uMxYs5PLm3UINBhzR_wO1WIp6knUfSz-HdVgXFw903sca9okNtfSXx8V3AthLVEFc2f1hCSI8nPQ_VqO7kL=w2400"/>
+        <Label Content="What store are you at?" HorizontalAlignment="Center" Height="42" Margin="0,191,0,0" VerticalAlignment="Top" Width="189" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <ComboBox x:Name="cbostore" HorizontalAlignment="Center" Height="23" Margin="0,233,0,0" VerticalAlignment="Top" Width="130"/>
+
+        <Label Content="Enter new base unleaded price" HorizontalAlignment="Center" Height="44" Margin="0,261,0,0" VerticalAlignment="Top" Width="317" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="tboprice" HorizontalAlignment="Center" Margin="0,310,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSubmit" Content="Submit"  HorizontalAlignment="Center" Height="34" Margin="0,347,0,0" VerticalAlignment="Top" Width="80" Background="#FFFF7B00"/>
+
+
     </Grid>
 </Window>

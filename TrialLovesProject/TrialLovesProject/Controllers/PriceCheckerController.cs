@@ -19,28 +19,25 @@ namespace TrialLovesProject.Controllers
         {
             var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderByDescending(s => s.TimeStamp).Take(1);
 
-            //var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
-            //if (tboprice < Convert.ToDouble(storePrices.NewPrice + storePrices.Store.Threshold) && (tboprice > Convert.ToDouble(storePrices.NewPrice - storePrices.Store.Threshold))
-            //{
+            //var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
+            foreach (var item in storePrices)
+            {
 
-                //storePrices.Previous = storePrices.NewPrice;
-                //storePrices.NewPrice = Convert.ToDecimal(tboprice);
+                if (tboprice < Convert.ToDouble(item.NewPrice + item.Store.Threshold) && (tboprice > Convert.ToDouble(item.NewPrice - item.Store.Threshold)))
+                {
+                    item.PreviousPrice = item.NewPrice;
+                    item.NewPrice = Convert.ToDecimal(tboprice);
+                }
 
-                return View(storePrices.ToList());
+                else
+                {
+                    RedirectToAction("Index, home");
+                }
 
-
-            //}
-                //else
-                //{
-
-                //    ViewBag.S = "Error, not within threshold";
-                //    RedirectToAction("index", "home");
-
-                //}
-                ////storePrices.PreviousPrice = storePrices.NewPrice;
-                ////storePrices.NewPrice = Convert.ToDecimal(tboprice);
-                //return View(storePrices);
             }
+            return View(storePrices.ToList());
+
+        }
 
         // GET: PriceChecker/Details/5
         public ActionResult Details(int? id)

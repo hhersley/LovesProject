@@ -72,8 +72,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="DB_128040_lovesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_128040_lovesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Grade.cs">
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceChecker.xaml.cs">
+      <DependentUpon>PriceChecker.xaml</DependentUpon>
     </Compile>
     <Compile Include="Store.cs">
       <DependentUpon>Database.tt</DependentUpon>
@@ -103,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PriceChecker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -128,6 +140,17 @@
     </EntityDeploy>
     <None Include="Database.edmx.diagram">
       <DependentUpon>Database.edmx</DependentUpon>
+    </None>
+    <None Include="DB_128040_lovesDataSet.xsc">
+      <DependentUpon>DB_128040_lovesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB_128040_lovesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_128040_lovesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB_128040_lovesDataSet.xss">
+      <DependentUpon>DB_128040_lovesDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
