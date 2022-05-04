@@ -31,7 +31,8 @@ namespace TrialLovesProject.Controllers
 
                 else
                 {
-                    RedirectToAction("Index, home");
+                    //RedirectToAction("Index, home");
+                    ViewBag.ErrorMessage = "That is not within the threshold";
                 }
 
             }
