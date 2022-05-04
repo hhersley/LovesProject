@@ -8,6 +8,10 @@
         Title="PriceChecker" Height="450" Width="800">
     <Grid Background="#FFFFE000">
         <Image HorizontalAlignment="Left" Height="146" Margin="44,0,0,0" VerticalAlignment="Top" Width="768" Source="https://lh3.googleusercontent.com/jTopVLmW569wZI6XIV6m4_jCJuU2Syq1kxMFVixWJylK0yG7l_fu-uMxYs5PLm3UINBhzR_wO1WIp6knUfSz-HdVgXFw903sca9okNtfSXx8V3AthLVEFc2f1hCSI8nPQ_VqO7kL=w2400"/>
-        
+        <DataGrid Margin="164,174,164,174" />
+        <Button Content="Update Database" HorizontalAlignment="Center" Margin="0,280,0,0" VerticalAlignment="Top" Height="46" Width="110" Background="#FFFF7B00" Click="Button_Click"/>
+        <Button Content="Export to CSV" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Height="46" Width="110" Background="#FFFF7B00" Click="Button_Click"/>
+        <ListBox x:Name="lbotester" Margin="28,251,645,37"/>
+
     </Grid>
 </Window>

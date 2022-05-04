@@ -19,9 +19,18 @@ namespace LovesProjectWPF
     /// </summary>
     public partial class PriceChecker : Window
     {
-        public PriceChecker()
+       
+            public PriceChecker(string StoreID, double? BasePrice)
         {
             InitializeComponent();
+
+
+        }
+       
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

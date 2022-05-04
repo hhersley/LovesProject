@@ -17,14 +17,14 @@ namespace TrialLovesProject.Controllers
         // GET: PriceChecker
         public ActionResult Index(int tbostore, double? tboprice)
         {
-            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderBy(s => s.TimeStamp).Take(1);
-            
+            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderByDescending(s => s.TimeStamp).Take(1);
+
             //var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
             //if (tboprice < Convert.ToDouble(storePrices.NewPrice + storePrices.Store.Threshold) && (tboprice > Convert.ToDouble(storePrices.NewPrice - storePrices.Store.Threshold))
             //{
 
-                storePrices.PreviousPrice = storePrices.NewPrice;
-                storePrices.NewPrice = Convert.ToDecimal(tboprice);
+                //storePrices.Previous = storePrices.NewPrice;
+                //storePrices.NewPrice = Convert.ToDecimal(tboprice);
 
                 return View(storePrices.ToList());
 
