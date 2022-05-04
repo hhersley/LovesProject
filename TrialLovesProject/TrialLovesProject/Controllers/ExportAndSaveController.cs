@@ -15,10 +15,30 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: ExportAndSave
-        public ActionResult Index(int tbostore)
+        public ActionResult Index(int tbostore, double? tboprice)
         {
-            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s=> s.StoreNumber == tbostore).OrderBy(s => s.TimeStamp).Take(1);
+            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderByDescending(s => s.TimeStamp).Take(1);
+
+            //var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
+            foreach (var item in storePrices)
+            {
+
+                if (tboprice < Convert.ToDouble(item.NewPrice + item.Store.Threshold) && (tboprice > Convert.ToDouble(item.NewPrice - item.Store.Threshold)))
+                {
+                    item.PreviousPrice = item.NewPrice;
+                    item.NewPrice = Convert.ToDecimal(tboprice);
+                }
+
+                else if (tboprice >= Convert.ToDouble(item.NewPrice + item.Store.Threshold) || (tboprice <= Convert.ToDouble(item.NewPrice - item.Store.Threshold)))
+                {
+                    //RedirectToAction("Index, home");
+                    ViewBag.ErrorMessage = "That is not within the threshold";
+                    return View("Index", "Home");
+                }
+
+            }
             return View(storePrices.ToList());
+
         }
 
         // GET: ExportAndSave/Details/5

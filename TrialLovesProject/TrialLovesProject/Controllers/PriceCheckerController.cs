@@ -25,8 +25,10 @@ namespace TrialLovesProject.Controllers
 
                 if (tboprice < Convert.ToDouble(item.NewPrice + item.Store.Threshold) && (tboprice > Convert.ToDouble(item.NewPrice - item.Store.Threshold)))
                 {
-                    item.PreviousPrice = item.NewPrice;
+                    item.PreviousPrice = Convert.ToDecimal(item.NewPrice);
                     item.NewPrice = Convert.ToDecimal(tboprice);
+                    item.TimeStamp = DateTime.Now;
+
                 }
 
                 else
@@ -34,6 +36,8 @@ namespace TrialLovesProject.Controllers
                     //RedirectToAction("Index, home");
                     ViewBag.ErrorMessage = "That is not within the threshold";
                 }
+
+                item.TimeStamp = DateTime.Now;
 
             }
             return View(storePrices.ToList());

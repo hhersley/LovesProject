@@ -37,30 +37,73 @@
 
     @foreach (var item in Model)
     {
-       
-            <tr>
-                @*if storeid=storenumber or storeid=all*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Store.StoreId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade1.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PreviousPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NewPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PriceDifference) @*is this supposed to be threshold or old v new*@
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimeStamp)
-                </td>
 
+        <tr>
+            @*if storeid=storenumber or storeid=all*@
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Unleaded
+            </td>
+            <td>
+                @item.PreviousPrice
+            </td>
+            <td>
+                @item.NewPrice
+            </td>
+            <td>
+                @item.PriceDifference
+            </td>
+            <td>
+                @item.TimeStamp
+            </td>
+            <td>@item.Grade1.GradeId</td>
+        </tr>
 
+        <tr>
 
-            </tr>
-        
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Plus
+            </td>
+            <td>
+                @(item.PreviousPrice + item.Store.Threshold)
+            </td>
+            <td>
+                @(item.NewPrice + item.Store.Threshold)
+            </td>
+            <td>
+                @item.PriceDifference
+            </td>
+            <td>
+                @item.TimeStamp
+            </td>
+            <td>@item.Grade1.GradeId</td>
+        </tr>
+
+        <tr>
+            @*if storeid=storenumber or storeid=all*@
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Super
+            </td>
+            <td>
+                @(item.PreviousPrice + item.Store.Threshold + item.Store.Threshold)
+            </td>
+            <td>
+                @(item.NewPrice + item.Store.Threshold + item.Store.Threshold)
+            </td>
+            <td>
+                @item.PriceDifference @*is this supposed to be threshold or old v new*@
+            </td>
+            <td>
+                @item.TimeStamp
+            </td>
+            <td>@item.Grade1.GradeId</td>
+        </tr>
     }

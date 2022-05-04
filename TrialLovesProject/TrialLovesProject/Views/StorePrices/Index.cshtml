@@ -38,7 +38,8 @@
 
 @foreach (var item in Model) {
  
-<tr> @*if storeid=storenumber or storeid=all*@
+<tr>
+    @*if storeid=storenumber or storeid=all*@
     <td>
         @Html.DisplayFor(modelItem => item.Store.StoreId)
     </td>
@@ -57,6 +58,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.TimeStamp)
     </td>
+    <td>@item.Grade1.GradeId</td>
 
 
 

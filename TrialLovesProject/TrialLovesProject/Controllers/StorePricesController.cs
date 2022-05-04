@@ -18,7 +18,7 @@ namespace TrialLovesProject.Controllers
         public ActionResult Index()
         {
           
-               var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store);
+               var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).OrderByDescending(s => s.TimeStamp);
             
                 return View(storePrices.ToList());
         }

@@ -8,56 +8,127 @@
 <h2>Price Checker</h2>
 
 
-<table class="table">
+@*<table class="table">*@
 
-
-
-    <tr>
-        <th>
-            @*@Html.DisplayFor(modelItem => item.Grade1.Name)*@
-            Unleaded Regular
-        </th>
-        <th>
-            Unleaded Plus
-        </th>
-        <th>
-            Unleaded Super
-        </th>
-    </tr>
-    @foreach (var item in Model)//something here so it rotates each grade, goes through each instance in grade
-    {
+    <table class="table">
         <tr>
-            <td>
+            <th>
+                @Html.DisplayNameFor(model => model.Store.StoreId)
+            </th>
+            <th>
+                Grade
+            </th>
 
-
-                @item.NewPrice.ToString("N2")  @*tboprice instead of new price, because it isnt updated yet*@
-            </td>
-            <td>
-                @((item.NewPrice + item.Store.Threshold).ToString("N2"))
-            </td>
-            <td>
-                @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
-
-            </td>
-
-
+            <th>
+                @Html.DisplayNameFor(model => model.PreviousPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NewPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceDifference)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </th>
 
 
 
         </tr>
 
-    }
+        @foreach (var item in Model)
+        {
 
-</table>
+            <tr>
+                @*if storeid=storenumber or storeid=all*@
+                <td>
+                    @item.Store.StoreId
+                </td>
+                <td>
+                    @((item.Grade1.Name))
+                </td>
+                <td>
+                    @item.PreviousPrice.ToString("N2")
+
+                </td>
+                <td>
+                    @item.NewPrice.ToString("N2")
+                </td>
+                <td>
+                    @((item.NewPrice - item.PreviousPrice).ToString("N2"))
+                </td>
+                <td>
+                    @DateTime.Now
+                </td>
+                <td>@item.Grade1.GradeId</td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    @item.Store.StoreId
+                </td>
+                <td>
+                    Plus
+                </td>
+                <td>
+                    @((item.PreviousPrice + item.Store.Threshold).ToString("N2"))
+                </td>
+                <td>
+                    @((item.NewPrice + item.Store.Threshold).ToString("N2"))
+                </td>
+                <td>
+                    @(((item.NewPrice + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold)).ToString("N2"))
+                </td>
+                <td>
+                    @DateTime.Now
+                </td>
+                <td>@item.Grade1.GradeId</td>
+            </tr>
+
+            <tr>
+                @*if storeid=storenumber or storeid=all*@
+                <td>
+                    @item.Store.StoreId
+                </td>
+                <td>
+                    Super
+                </td>
+                <td>
+                    @((item.PreviousPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+                </td>
+                <td>
+                    @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+                </td>
+                <td>
+                    @(((item.NewPrice + item.Store.Threshold + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold + item.Store.Threshold)).ToString("N2")) @*is this supposed to be threshold or old v new*@
+                </td>
+                <td>
+                    @DateTime.Now
+                </td>
+                <td>@item.Grade1.GradeId</td>
+            </tr>
+
+       
 
 
 
 
-<div style="padding-left: 45%; ">
 
-    <button style="background-color:red; color:white" id="Validate" type="button"><strong>Validate Price</strong></button>
+               
 
-</div>
+            }
+
+        </table>
+
+
+
+
+        <div style="padding-left: 45%; ">
+
+            <button style="background-color:red; color:white" id="Validate" type="button"><strong>Validate Price</strong></button>
+
+        </div>
 
 
 
