@@ -8,118 +8,125 @@
 <h2>Price Checker</h2>
 
 
-@*<table class="table">*@
 
-    <table class="table">
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Store.StoreId)
+        </th>
+        <th>
+            Grade
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PreviousPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PriceDifference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        
+
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Store.StoreId)
-            </th>
-            <th>
-                Grade
-            </th>
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Unleaded
+            </td>
+            <td>
+                @item.PreviousPrice.ToString("N2")
 
-            <th>
-                @Html.DisplayNameFor(model => model.PreviousPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NewPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PriceDifference)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeStamp)
-            </th>
+            </td>
+            <td>
+                @item.NewPrice.ToString("N2")
+            </td>
+            <td>
+                @((item.NewPrice - item.PreviousPrice).ToString("N2"))
+            </td>
+            <td>
+                @DateTime.Now
+            </td>
+            <td>@(item.Grade1.GradeId = 1)</td>
+
+        </tr>
+        <tr>
 
 
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Super
+
+            </td>
+            <td>
+                @((item.PreviousPrice + item.Store.Threshold).ToString("N2"))
+            </td>
+            <td>
+                @((item.NewPrice + item.Store.Threshold).ToString("N2"))
+            </td>
+            <td>
+                @(((item.NewPrice + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold)).ToString("N2"))
+            </td>
+            <td>
+                @DateTime.Now
+            </td>
+            <td>
+                @(item.Grade1.GradeId = 2)
+            </td>
+
+        </tr>
+       
+        <tr>
+
+
+            <td>
+                @item.Store.StoreId
+            </td>
+            <td>
+                Plus
+
+            </td>
+            <td>
+                @((item.PreviousPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+            </td>
+            <td>
+                @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
+            </td>
+            <td>
+                @(((item.NewPrice + item.Store.Threshold + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold + item.Store.Threshold)).ToString("N2")) @*is this supposed to be threshold or old v new*@
+            </td>
+            <td>
+                @DateTime.Now
+            </td>
+            <td>@(item.Grade1.GradeId = 3)</td>
 
         </tr>
 
-        @foreach (var item in Model)
-        {
-
-            <tr>
-                @*if storeid=storenumber or storeid=all*@
-                <td>
-                    @item.Store.StoreId
-                </td>
-                <td>
-                    @((item.Grade1.Name))
-                </td>
-                <td>
-                    @item.PreviousPrice.ToString("N2")
-
-                </td>
-                <td>
-                    @item.NewPrice.ToString("N2")
-                </td>
-                <td>
-                    @((item.NewPrice - item.PreviousPrice).ToString("N2"))
-                </td>
-                <td>
-                    @DateTime.Now
-                </td>
-                <td>@item.Grade1.GradeId</td>
-            </tr>
-
-            <tr>
-
-                <td>
-                    @item.Store.StoreId
-                </td>
-                <td>
-                    Plus
-                </td>
-                <td>
-                    @((item.PreviousPrice + item.Store.Threshold).ToString("N2"))
-                </td>
-                <td>
-                    @((item.NewPrice + item.Store.Threshold).ToString("N2"))
-                </td>
-                <td>
-                    @(((item.NewPrice + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold)).ToString("N2"))
-                </td>
-                <td>
-                    @DateTime.Now
-                </td>
-                <td>@item.Grade1.GradeId</td>
-            </tr>
-
-            <tr>
-                @*if storeid=storenumber or storeid=all*@
-                <td>
-                    @item.Store.StoreId
-                </td>
-                <td>
-                    Super
-                </td>
-                <td>
-                    @((item.PreviousPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
-                </td>
-                <td>
-                    @((item.NewPrice + item.Store.Threshold + item.Store.Threshold).ToString("N2"))
-                </td>
-                <td>
-                    @(((item.NewPrice + item.Store.Threshold + item.Store.Threshold)- (item.PreviousPrice + item.Store.Threshold + item.Store.Threshold)).ToString("N2")) @*is this supposed to be threshold or old v new*@
-                </td>
-                <td>
-                    @DateTime.Now
-                </td>
-                <td>@item.Grade1.GradeId</td>
-            </tr>
-
-       
 
 
 
 
 
-               
 
-            }
 
-        </table>
+
+    }
+
+</table>
 
 
 
