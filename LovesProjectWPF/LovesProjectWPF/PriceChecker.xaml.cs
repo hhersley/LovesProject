@@ -10,26 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LovesProjectWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PriceChecker.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PriceChecker : Window
     {
-        public MainWindow()
+        public PriceChecker()
         {
             InitializeComponent();
-        }
-
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
-        {
-            string storenumber = cbostore.SelectedItem.ToString();
-            double trialnewprice = Convert.ToDouble(tboprice.Text);
-            PriceChecker.Show();
         }
     }
 }

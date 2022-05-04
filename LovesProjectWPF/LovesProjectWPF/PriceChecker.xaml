@@ -1,0 +1,13 @@
+﻿<Window x:Class="LovesProjectWPF.PriceChecker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LovesProjectWPF"
+        mc:Ignorable="d"
+        Title="PriceChecker" Height="450" Width="800">
+    <Grid Background="#FFFFE000">
+        <Image HorizontalAlignment="Left" Height="146" Margin="44,0,0,0" VerticalAlignment="Top" Width="768" Source="https://lh3.googleusercontent.com/jTopVLmW569wZI6XIV6m4_jCJuU2Syq1kxMFVixWJylK0yG7l_fu-uMxYs5PLm3UINBhzR_wO1WIp6knUfSz-HdVgXFw903sca9okNtfSXx8V3AthLVEFc2f1hCSI8nPQ_VqO7kL=w2400"/>
+        
+    </Grid>
+</Window>

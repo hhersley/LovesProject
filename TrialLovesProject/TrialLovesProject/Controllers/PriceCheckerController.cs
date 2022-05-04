@@ -15,32 +15,32 @@ namespace TrialLovesProject.Controllers
         private DB_128040_lovesEntities db = new DB_128040_lovesEntities();
 
         // GET: PriceChecker
-        public ActionResult Index(int tbostore, double tboprice)
+        public ActionResult Index(int tbostore, double? tboprice)
         {
-           
-            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
-            if (tboprice <= Convert.ToDouble(storePrices.NewPrice + storePrices.Store.Threshold))
-            {
-                if (tboprice >= Convert.ToDouble(storePrices.NewPrice - storePrices.Store.Threshold))
-                {
-                    storePrices.PreviousPrice = storePrices.NewPrice;
-                    storePrices.NewPrice = Convert.ToDecimal(tboprice);
+            var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber == tbostore).OrderBy(s => s.TimeStamp).Take(1);
+            
+            //var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
+            //if (tboprice < Convert.ToDouble(storePrices.NewPrice + storePrices.Store.Threshold) && (tboprice > Convert.ToDouble(storePrices.NewPrice - storePrices.Store.Threshold))
+            //{
 
-                    return View(storePrices);
-                }
+                storePrices.PreviousPrice = storePrices.NewPrice;
+                storePrices.NewPrice = Convert.ToDecimal(tboprice);
 
+                return View(storePrices.ToList());
+
+
+            //}
+                //else
+                //{
+
+                //    ViewBag.S = "Error, not within threshold";
+                //    RedirectToAction("index", "home");
+
+                //}
+                ////storePrices.PreviousPrice = storePrices.NewPrice;
+                ////storePrices.NewPrice = Convert.ToDecimal(tboprice);
+                //return View(storePrices);
             }
-            else
-            {
-
-                ViewBag.S = "Error, not within threshold";
-                return RedirectToAction("index", "home");
-
-            }
-            //storePrices.PreviousPrice = storePrices.NewPrice;
-            //storePrices.NewPrice = Convert.ToDecimal(tboprice);
-            return View(storePrices);
-        }
 
         // GET: PriceChecker/Details/5
         public ActionResult Details(int? id)

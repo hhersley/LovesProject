@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LovesProjectWPF
+namespace WPFversion
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,13 +23,6 @@ namespace LovesProjectWPF
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
-        {
-            string storenumber = cbostore.SelectedItem.ToString();
-            double trialnewprice = Convert.ToDouble(tboprice.Text);
-            PriceChecker.Show();
         }
     }
 }
