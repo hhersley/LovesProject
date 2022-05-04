@@ -19,10 +19,26 @@ namespace TrialLovesProject.Controllers
         {
            
             var storePrices = db.StorePrices.Include(s => s.Grade1).Include(s => s.Store).Where(s => s.StoreNumber==tbostore).OrderByDescending(s => s.TimeStamp).Take(1).SingleOrDefault();
+            if (tboprice <= Convert.ToDouble(storePrices.NewPrice + storePrices.Store.Threshold))
+            {
+                if (tboprice >= Convert.ToDouble(storePrices.NewPrice - storePrices.Store.Threshold))
+                {
+                    storePrices.PreviousPrice = storePrices.NewPrice;
+                    storePrices.NewPrice = Convert.ToDecimal(tboprice);
 
-            storePrices.PreviousPrice = storePrices.NewPrice;
-            storePrices.NewPrice = Convert.ToDecimal(tboprice);
+                    return View(storePrices);
+                }
 
+            }
+            else
+            {
+
+                ViewBag.S = "Error, not within threshold";
+                return RedirectToAction("index", "home");
+
+            }
+            //storePrices.PreviousPrice = storePrices.NewPrice;
+            //storePrices.NewPrice = Convert.ToDecimal(tboprice);
             return View(storePrices);
         }
 
