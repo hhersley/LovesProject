@@ -5,11 +5,47 @@
    
 }
 
+<script src="~/Content/FileSaver.js"></script>
+<script>
+    function fnExcelReport(id, name) {
+        var tab_text = '<html xmlns: x=urn:schemas-microsoft-com:office:excel">';
+        tab_text = tab_text + '<head><xml><x: EscelWorkbook><x: ExcelWorksheets><x: ExcelWorksheet>';
+        tab_text = tab_text + '<x: Name>Test Sheet</x:Name>';
+        tab_text = tab_text + '<x: WorksheetOptions><x: Panes></x: Panes></x: WorksheetOptions></x: ExcelWorksheet>';
+        tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+        tab_text = tab_text + "<table border = '1px' style='color:black'>";
+
+        var exportTable = $('a' + id).clone();
+        exportTable.find('input').each(function (PriceChecker, elem) { $(elem).remove(); })
+        exportTable.find('a').each(function (PriceChecker, elem) { $(elem).remove(); })
+        tab_text = tab_text + exportTable.html();
+        tab_text = tab_text + '</table></body></html>';
+        var fileName = "Demo" + '.xls';
+
+        var blob = new Blob([tab_text], { type: "application/vnd.ms-excel;charset=utf-8" })
+        window.saveAs(blob, fileName);
+
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>Price Checker</h2>
 
 
 
-<table id="PriceTable" class="table">
+<table class="table table-bordered" id="dataTable" >
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Store.StoreId)
@@ -129,7 +165,7 @@
     }
 
     </table>
-<div style="padding-left: 45%">
+<div style="padding-left: 43%">
     <button style="  background-color:red; color: white;">
         @Html.ActionLink("Add to database", "Create", "PriceChecker")
     </button>
@@ -138,11 +174,13 @@
 
 <div style="padding-left: 43%; padding-top: 15px">
 
-    <button onclick="ExportingAction()" style="background-color:red; color:white" id="Validate" type="button">
+    <button class="btn btn-primary" onclick="javascript: fnExcelReport('dataTable', 'data'">Export To Excel</button>
+    
+    @*onclick="ExportingAction()" style="background-color:red; color:white" id="Validate" type="button">
         
         <span class="glyphicon glyphicon-download"></span>
-        <strong>Update and Export</strong>
-    </button>
+        <strong>Update and Export</strong>*@
+    @*</button>*@
 </div>
 
 
