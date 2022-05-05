@@ -42,6 +42,10 @@ namespace TrialLovesProject.Controllers
             }
             return View(storePrices.ToList());
 
+            //ExportResults exports = new ExportResults();
+            //var lstStudents = (from Student in exports.Students
+            //                   select Student);
+            //return View(lstStudents);
         }
 
 
@@ -73,70 +77,178 @@ namespace TrialLovesProject.Controllers
             return View(storePrice);
         }
     }
-//        [HttpGet]
-//        public ActionResult ExportingAction()
-//        {
-//            List<ExportData> exports = new List<ExportData>();
-//            exports.AddRange(new ExportData[] {
-//new ExportData{
 
-//StoreNumber =1,
-//Grade = 1, 
-//PreviousPrice = Convert.ToDecimal(3.45), 
-//NewPrice = Convert.ToDecimal(3.55), 
-//PriceDifference = Convert.ToDecimal(.10), 
-//TimeStamp = DateTime.Now,
 
-//    },
 
-//    new ExportData{
-//    StoreNumber =1,
-//Grade = 2,
-//PreviousPrice = Convert.ToDecimal(3.55),
-//NewPrice = Convert.ToDecimal(3.65),
-//PriceDifference = Convert.ToDecimal(.10),
-//TimeStamp = DateTime.Now,
-//}, 
-//    new ExportData
-//    {
-//        StoreNumber =1,
-//Grade = 3,
-//PreviousPrice = Convert.ToDecimal(3.65),
-//NewPrice = Convert.ToDecimal(3.75),
-//PriceDifference = Convert.ToDecimal(.10),
-//TimeStamp = DateTime.Now,
-//    }
 
-//                }
-//            ); ;
-//            TempData["Data"] = exports;
-//            return View(exports);
-//        }
 
-//        [HttpGet]
-//        [ActionName("Download")]
-//        public void Download()
-//        {
-//            List<ExportData> emps = TempData["Data"] as List<ExportData>;
-//            var grid = new System.Web.UI.WebControls.GridView();
-//            grid.DataSource = emps;
-//            grid.DataBind();
-//            Response.ClearContent();
-//            Response.Buffer = true;
-//            Response.AddHeader("content-disposition", "attachment; filename=MyExcelFile.xls");
-//            Response.ContentType = "application/ms-excel";
-//            Response.Charset = "";
-//            var sw = new StringWriter();
-//            HtmlTextWriter htw = new HtmlTextWriter(sw);
-//            grid.RenderControl(htw);
-//            Response.Output.Write(sw.ToString());
-//            Response.Flush();
-//            Response.End();
-//            TempData["Data"] = emps;
-//        }
 
-//    }
 
- 
-    }
+
+
+
+
+
+
+    //public ActionResult ()
+    //{
+    //    CodingvilaEntities entities = new CodingvilaEntities();
+    //    var lstStudents = (from Student in entities.Students
+    //                       select Student);
+    //    return View(lstStudents);
+    //}
+
+    //[HttpPost]
+    //public FileResult ExportToCSV()
+    //{
+    //    #region Get list of Students from Database
+
+    //    CodingvilaEntities entities = new CodingvilaEntities();
+    //    List<object> lstStudents = (from Student in entities.Students.ToList()
+    //                                select new[] { Student.RollNo.ToString(),
+    //                                                            Student.EnrollmentNo,
+    //                                                            Student.Name,
+    //                                                            Student.Branch,
+    //                                                            Student.University
+    //                              }).ToList<object>();
+
+    //    #endregion
+
+    //    #region Create Name of Columns
+
+    //    var names = typeof(Student).GetProperties()
+    //                .Select(property => property.Name)
+    //                .ToArray();
+
+    //    lstStudents.Insert(0, names.Where(x => x != names[0]).ToArray());
+
+    //    #endregion
+
+    //    #region Generate CSV
+
+    //    StringBuilder sb = new StringBuilder();
+    //    foreach (var item in lstStudents)
+    //    {
+    //        string[] arrStudents = (string[])item;
+    //        foreach (var data in arrStudents)
+    //        {
+    //            //Append data with comma(,) separator.
+    //            sb.Append(data + ',');
+    //        }
+    //        //Append new line character.
+    //        sb.Append("\r\n");
+    //    }
+
+    //    #endregion
+
+    //    #region Download CSV
+
+    //    return File(Encoding.ASCII.GetBytes(sb.ToString()), "text/csv", "Students.csv");
+
+    //    #endregion
+    //}
+
+
+
+
+
+
+
+
+
+
+
+
+    //public ActionResult WriteDataToExcel()
+    //{
+    //    DataTable dt = getData();
+    //    //Name of File  
+    //    string fileName = "Sample.xlsx";
+    //    using (XLWorkbook wb = new XLWorkbook())
+    //    {
+    //        //Add DataTable in worksheet  
+    //        wb.Worksheets.Add(dt);
+    //        using (MemoryStream stream = new MemoryStream())
+    //        {
+    //            wb.SaveAs(stream);
+    //            //Return xlsx Excel File  
+    //            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+    //        }
+    //    }
+    //}
+
+    //DataTable getData()
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+
+
+
+    //        [HttpGet]
+    //        public ActionResult ExportingAction()
+    //        {
+    //            List<ExportData> exports = new List<ExportData>();
+    //            exports.AddRange(new ExportData[] {
+    //new ExportData{
+
+    //StoreNumber =1,
+    //Grade = 1, 
+    //PreviousPrice = Convert.ToDecimal(3.45), 
+    //NewPrice = Convert.ToDecimal(3.55), 
+    //PriceDifference = Convert.ToDecimal(.10), 
+    //TimeStamp = DateTime.Now,
+
+    //    },
+
+    //    new ExportData{
+    //    StoreNumber =1,
+    //Grade = 2,
+    //PreviousPrice = Convert.ToDecimal(3.55),
+    //NewPrice = Convert.ToDecimal(3.65),
+    //PriceDifference = Convert.ToDecimal(.10),
+    //TimeStamp = DateTime.Now,
+    //}, 
+    //    new ExportData
+    //    {
+    //        StoreNumber =1,
+    //Grade = 3,
+    //PreviousPrice = Convert.ToDecimal(3.65),
+    //NewPrice = Convert.ToDecimal(3.75),
+    //PriceDifference = Convert.ToDecimal(.10),
+    //TimeStamp = DateTime.Now,
+    //    }
+
+    //                }
+    //            ); ;
+    //            TempData["Data"] = exports;
+    //            return View(exports);
+    //        }
+
+    //        [HttpGet]
+    //        [ActionName("Download")]
+    //        public void Download()
+    //        {
+    //            List<ExportData> emps = TempData["Data"] as List<ExportData>;
+    //            var grid = new System.Web.UI.WebControls.GridView();
+    //            grid.DataSource = emps;
+    //            grid.DataBind();
+    //            Response.ClearContent();
+    //            Response.Buffer = true;
+    //            Response.AddHeader("content-disposition", "attachment; filename=MyExcelFile.xls");
+    //            Response.ContentType = "application/ms-excel";
+    //            Response.Charset = "";
+    //            var sw = new StringWriter();
+    //            HtmlTextWriter htw = new HtmlTextWriter(sw);
+    //            grid.RenderControl(htw);
+    //            Response.Output.Write(sw.ToString());
+    //            Response.Flush();
+    //            Response.End();
+    //            TempData["Data"] = emps;
+    //        }
+
+    //    }
+
+
+}
 
