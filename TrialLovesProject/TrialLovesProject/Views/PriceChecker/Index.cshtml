@@ -9,7 +9,7 @@
 
 
 
-<table class="table">
+<table id="PriceTable" class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Store.StoreId)
@@ -35,31 +35,33 @@
 
     </tr>
 
-    @foreach (var item in Model)
-    {
-        
+
+        @foreach (var item in Model)
+        {
+
 
         <tr>
-            <td>
+            <td id="oneid">
                 @item.Store.StoreId
+                
             </td>
-            <td>
+            <td id="1grade">
                 Unleaded
             </td>
-            <td>
+            <td id="1previous">
                 @item.PreviousPrice.ToString("N2")
 
             </td>
-            <td>
+            <td id="1new">
                 @item.NewPrice.ToString("N2")
             </td>
-            <td>
+            <td id="1diff">
                 @((item.NewPrice - item.PreviousPrice).ToString("N2"))
             </td>
-            <td>
+            <td id="1time">
                 @DateTime.Now
             </td>
-            <td>@(item.Grade1.GradeId = 1)</td>
+            <td hidden>@(item.Grade1.GradeId = 1)</td>
 
         </tr>
         <tr>
@@ -84,12 +86,12 @@
             <td>
                 @DateTime.Now
             </td>
-            <td>
+            <td hidden>
                 @(item.Grade1.GradeId = 2)
             </td>
 
         </tr>
-       
+
         <tr>
 
 
@@ -112,12 +114,12 @@
             <td>
                 @DateTime.Now
             </td>
-            <td>@(item.Grade1.GradeId = 3)</td>
+            <td hidden>@(item.Grade1.GradeId = 3)</td>
 
         </tr>
 
 
-
+        
 
 
 
@@ -126,16 +128,22 @@
 
     }
 
-</table>
+    </table>
+<div style="padding-left: 45%">
+    <button style="  background-color:red; color: white;">
+        @Html.ActionLink("Add to database", "Create", "PriceChecker")
+    </button>
+</div>
 
 
+<div style="padding-left: 43%; padding-top: 15px">
 
-
-        <div style="padding-left: 45%; ">
-
-            <button style="background-color:red; color:white" id="Validate" type="button"><strong>Validate Price</strong></button>
-
-        </div>
+    <button onclick="ExportingAction()" style="background-color:red; color:white" id="Validate" type="button">
+        
+        <span class="glyphicon glyphicon-download"></span>
+        <strong>Update and Export</strong>
+    </button>
+</div>
 
 
 
