@@ -76,21 +76,21 @@ namespace TrialLovesProject.Controllers
             ViewBag.StoreNumber = new SelectList(db.Stores, "StoreId", "StoreId", storePrice.StoreNumber);
             return View(storePrice);
         }
-        public string ConvertDatatableToXML(DataTable dataTable)
-        {
-            MemoryStream str = new MemoryStream();
-            dataTable.WriteXml(str, true);
-            str.Seek(0, SeekOrigin.Begin);
-            StreamReader sr = new StreamReader(str);
-            string xmlstr;
-            xmlstr = sr.ReadToEnd();
-            return (xmlstr);
-            //File.WriteAllText("Data.csv", csv);
+        //public string ConvertDatatableToXML(DataTable dataTable)
+        //{
+        //    MemoryStream str = new MemoryStream();
+        //    dataTable.WriteXml(str, true);
+        //    str.Seek(0, SeekOrigin.Begin);
+        //    StreamReader sr = new StreamReader(str);
+        //    string xmlstr;
+        //    xmlstr = sr.ReadToEnd();
+        //    return (xmlstr);
+        //    //File.WriteAllText("Data.csv", csv);
 
 
-            //string filePath = "";
-            //xmlstr.WriteXml(filePath);
-        }
+        //    //string filePath = "";
+        //    //xmlstr.WriteXml(filePath);
+        //}
     }
 
 
